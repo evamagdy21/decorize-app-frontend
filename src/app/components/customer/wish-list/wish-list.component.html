@@ -1,0 +1,195 @@
+<!--component html goes here -->
+
+
+<section class="content" style="margin-top: 16rem;">
+  <div class="container">
+
+    <div class="row">
+      <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+        <user-side-menu></user-side-menu>
+      </div>
+      <div class="col-lg-9 col-md-9 col-sm- col-xs-12">
+        <div class="row productFilter clearfix">
+
+          <div class="pull-left">
+            <h3>{{'menu.MyFavorites'|translate}}</h3>
+          </div>
+        </div>
+
+        <div class="row">
+          <div *ngFor="let product of wishListProducts" class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+            <!-------------------------------Start Product-------------------------------------------->
+            <div class="thumbnail product-grid2 listPris p-0">
+              <div class="product-image2 ">
+                <a [routerLink]="['/product/',product.ID]">
+                  <img class="productImage image img-fluid " [alt]="product.Name" [src]="product.Image"
+                    onError="this.src='../../../assets/images/nophoto.png';"></a>
+
+                <!-- <div class="row">
+                  <div class="col-xs-12 col-md-12 text-center" *ngIf="product.Stock==0">
+                    <a class="btn btn-primary buttonList unavilable margin-top-15 margin-bottom-10" href="#"><span
+                        class="hidden-sm hidden-xs">  <i class="fa fa-shopping-cart " ></i></span>
+                      {{'shared.unavilable'|translate}}</a>
+                  </div>
+                </div> -->
+              </div>
+              <div class="img__overlay">
+                <ul class="social">
+                  <li>
+                    <a text-center (click)="ProductDetails(product.ID)" >
+                      <i class=" icon fa fa-eye"></i>
+                    </a>
+                  </li><br>
+
+                  <!-- <li>
+                    <button text-center *ngIf="!product.AddedToWishlist" (click)="addToWishList(product)">
+                      <i class="fa fa-heart"></i>
+                    </button>
+                  </li><br> -->
+                  <li>
+                    <button style=" text-align: center; color: #fff;
+                                              background-color: #BFA947;
+                                              -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+                                                      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);"
+                      (click)="RemoveFromWishList(product)">
+                      <span>
+                        <i class=" fa fa-heart"></i>
+                      </span>
+                    </button>
+                  </li><br>
+                  <div *ngIf="product.Stock>0">
+                    <li>
+                      <button *ngIf="!product.AddedToCart" (click)="addToCart(product)" text-center>
+                        <span>
+                            <i class="fa fa-shopping-cart " ></i>
+                        </span>
+                      </button>
+                    </li><br>
+                    <li>
+                      <button style=" text-align: center; color: #fff;
+                                                      background-color: #BFA947;
+                                                      -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+                                                              box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);"
+                        *ngIf="product.AddedToCart" (click)="removeFromCart(product)">
+                        <span>  <i class="fa fa-shopping-cart " ></i> </span>
+                      </button>
+                    </li>
+                  </div><br>
+                  <div *ngIf="product.Stock <= 0">
+                    <li><a text-center><i class="fas fa-ban"></i></a></li><br>
+                  </div>
+                </ul>
+              </div>
+
+
+
+            </div>
+            <div class="row text-center listPris">
+              <div class="col-12">
+                <a [routerLink]="product.ProductUrl">
+                  <h6 class="title">{{(product.Name.length>20)?product.Name.substr(0,20):product.Name}}</h6>
+                </a>
+                <div class="text-center">
+                  <product-rating [value]="product.RatingAvg"></product-rating>
+                </div>
+              
+                <p><i class="far fa-money-bill-alt priceIcon" style="color: #BFA947"></i>&nbsp;{{product.OldPrice}}&nbsp;{{'shared.SAR'|translate}}</p><br>
+        
+                <div *ngIf="product.Discount>0" class="discount">
+                  <span class="btn btn-danger percintageBTN" ><span>{{product.Discount}}%</span></span>
+                </div>
+                  <br>
+                <br>
+              </div>
+            </div>
+            <!-------------------------------End Product---------------------------------------------->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+
+
+
+<!-- 
+<section class="content"  style="margin-top: 13rem;">
+    <section class="background-offWhite">
+      <div class="container">
+  
+        <div class="row margin-v-20">
+          <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+            <user-side-menu></user-side-menu>
+          </div>
+  
+          <div class="col-lg-9 col-md-9 col-sm- col-xs-12 listCategoryProduct">
+            <div class="row productFilter clearfix">
+              <div class="pull-left ">
+                <h3>{{'wishlist.my'|translate}}</h3>
+              </div>
+  
+              <div class="col-xs-12">
+                <hr>
+              </div>
+            </div>
+  
+            <div class="row">
+              <div *ngFor="let product of wishListProducts" class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+              
+                <div class="thumbnail">
+                  <a data-placement="left" (click)="RemoveFromWishList(product)" data-original-title="Add to Wishlist"
+                    data-toggle="tooltip" class="add-fav tooltipHere" [class.active]="product.AddedToWishlist"><i class="fa fa-heart"></i></a>
+                  <div class="image">
+                    <a [routerLink]="['/product/',product.ID]"><img class="productImage" [alt]="product.Name" [src]="product.Image"></a>
+                  </div>
+                  <div class="listPris">
+                    <a [routerLink]="['/product/', product.ID]">
+                      <h4 class="colorBittersweet">{{(product.Name.length>20)?product.Name.substr(0,20):product.Name}}</h4>
+                    </a>
+                    <product-rating [value]="product.RatingAvg"></product-rating>
+                    <div class="row">
+                      <div class="col-xs-12 col-md-7">
+                        <p *ngIf="product.OldPrice>product.NewPrice && product.NewPrice>0" class="priceold">{{product.OldPrice
+                          | number}} <span>{{'product.coin'|translate}}</span></p>
+                        <p *ngIf="product.OldPrice>product.NewPrice && product.NewPrice>0"><span class="price Englishfont">{{product.NewPrice
+                            | number}}</span>
+                            {{'product.coin'|translate}}</p>
+                        <p *ngIf="product.OldPrice<=product.NewPrice || product.NewPrice==0"><span class="price Englishfont">{{product.OldPrice
+                            | number}}</span>
+                            {{'product.coin'|translate}}</p>
+                      </div>
+                      <div class="col-xs-12 col-md-5" *ngIf="product.Discount>0">
+                        <a class="btn btn-primary percintageBTN margin-top-5 margin-bottom-5" href="#"><span>{{product.Discount}}%</span></a>
+                      </div>
+                    </div>
+  
+                    <div class="row">
+                      <div class="col-xs-12 col-md-12 text-center" *ngIf="product.Stock>0">
+                        <button *ngIf="!product.AddedToCart" (click)="addToCart(product)" class="btn btn-primary buttonList margin-top-15 margin-bottom-10">
+                          <span><i class="fas fa-shopping-bag"></i></span> {{'product.add-cart'|translate}}
+                        </button>
+                        <button *ngIf="product.AddedToCart" (click)="removeFromCart(product)" class="btn btn-primary buttonList margin-top-15 margin-bottom-10">
+                          <span><i class="fas fa-trash"></i></span> {{'product.delete-cart'|translate}}</button>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-xs-12 col-md-12 text-center" *ngIf="product.Stock==0">
+                        <a class="btn btn-primary buttonList unavilable margin-top-15 margin-bottom-10" href="#"><span
+                            class="hidden-sm hidden-xs"><i class="fas fa-shopping-bag"></i></span>
+                          {{'shared.unavilable'|translate}}</a>
+                      </div>
+                    </div>
+                  </div>
+  
+                </div>
+      
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+    </section>
+  </section> -->

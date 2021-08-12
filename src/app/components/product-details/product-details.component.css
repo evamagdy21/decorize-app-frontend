@@ -1,0 +1,156 @@
+.boldValue{
+    color: red;
+}
+.NotFound{
+    visibility: .3;
+    background-color: blue;
+    visibility: hidden;
+    /* display: none; */
+}
+/* new */
+.ratings
+{
+    text-align: auto;
+    text-align: -webkit-auto;
+}
+.headerproductdetails
+{
+  background-color:#f6f6f6;
+  color:#4b4b4b;
+  text-align: auto;
+    text-align: -webkit-auto;
+}
+.imgofframe
+{
+    border: 1px solid #e3e3e3;
+    padding: 50px;
+}
+.textofframe
+{
+    color: #434343;
+    text-align: auto;
+    text-align: -webkit-auto;
+}
+.fa-heart
+{
+   
+        color:#bcbcbc
+}
+.heartred
+{
+    color:#e60000;
+}
+a.buttonweb2
+{
+    background-color: transparent;
+    border-color: transparent;
+    outline: none;
+    /* position: absolute;
+    top: 2px; */
+}
+a.buttonweb2:hover
+{
+    background-color: transparent;
+    border-color: transparent;
+    outline: none;
+}
+.aofreviews
+{
+    text-decoration: none;
+    color:#bfa947;
+    text-align: initial
+}
+.fa-star
+{
+    color:#bfa947;
+}
+.priceNum2,.pricetxt2
+{
+    color:#bfa947;
+    font-size: 27px;
+    text-align: auto;
+    text-align: -webkit-auto;
+}
+.paragraphofproduct
+{
+    color:#8b8b8b; 
+    text-align: auto;
+    text-align: -webkit-auto;
+}
+.addtocartbtn1
+{
+  background-color:#bfa947;
+  border:1px solid #bfa947;
+  color:#fafafa;
+  width: 12rem;
+}
+.addtocartbtn1:hover
+{
+    color:#fafafa; 
+}
+.categoryp
+{
+    color:#7a7a7a;
+    text-align: auto;
+    text-align: -webkit-auto;
+}
+.categoryp span
+{
+    color:#bfa947;
+    text-align: auto;
+    text-align: -webkit-auto;
+}
+.card2
+{
+    border:none;
+}
+.tab-content
+{
+    border: none;
+    border-top: 1px solid #ddd;
+    text-align: auto;
+    text-align: -webkit-auto;
+}
+.nav-tabs > li > a,.nav-tabs > li > a:hover {
+    background: none;
+    font-size: 20px;
+    color: #b8b8b8;
+    border: none;
+}
+.nav-tabs >li>a>span
+{
+    background: none;
+    font-size: 20px;
+    color: #b8b8b8;
+    border: none;
+}
+.nav-tabs > li > a:hover , .nav-tabs > li.active > a >span
+{
+    border:none;
+    font-size: 20px;
+    color:#bfa947;
+}
+.sendbtn ,.sendbtn:hover
+{
+    background:#bfa947;
+    color:white;
+    border:1px solid #bfa947;
+}
+
+a.buttonList.unavilable 
+{
+    background-color: #c1c1c1 !important;
+    box-shadow: none !important;
+    color: #000 !important;
+    width: 10em;
+    margin-top: 3em;
+    
+}
+.cartProduct{
+    width: 12rem;
+    height: 12rem;
+}
+.name{
+    display: inline;
+    font-weight: bold;
+}

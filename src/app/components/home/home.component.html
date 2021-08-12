@@ -1,0 +1,203 @@
+<!-------------------------------Start Offer Day--------------------------------------------->
+<simple-notifications></simple-notifications>
+<ng-snotify></ng-snotify>
+<app-search></app-search>
+<!--  Featured Products-->
+
+<div id="FeaturedProducts">
+    <h1 class="text-center animated fadeInUp">{{'home.FeaturedProducts'|translate}}</h1>
+    <div ng2-carouselamos class="slides-wrapper container " [items]="featuredProducts | async" [width]="900"
+        [$prev]="prev" [$next]="next" [$item]="item1" style="direction: initial;">
+        <ng-template #prev>
+            <button id="left" type="button" role="presentation" class="owl-prev"><span
+                    aria-label="Previous">‹</span></button>
+        </ng-template>
+        <ng-template #next>
+
+            <button id="right" type="button" role="presentation" class="owl-next"><span
+                    aria-label="Next">›</span></button>
+        </ng-template>
+    </div>
+    <div class=" col-3">
+        <ng-template #item1 let-item1>
+            <div class="items product-grid1">
+                <div class="product-image2">
+                    <a [routerLink]="item1.ProductUrl">
+                        <img class="pic-1 " onError="this.src='../../../assets/images/nophoto.png';"
+                            src="{{item1.Image}} ">
+                    </a>
+                    <div class="img__overlay">
+                        <ul class="social">
+                            <li>
+                                <a (click)="ProductDetails(item1.ID)" text-center>
+                                    <i class=" icon fa fa-eye"></i>
+                                </a>
+                            </li>
+                            <br>
+
+                            <li>
+                                <button text-center *ngIf="!item1.AddedToWishlist" (click)="addToWishList(item1)">
+                                    <i class="fa fa-heart"></i>
+                                </button>
+                            </li><br>
+                            <li>
+                                <button *ngIf="item1.AddedToWishlist" style=" text-align: center; color: #fff;
+                                background-color: #BFA947;
+                                -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+                                        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);" (click)="removeFromWishList(item1)">
+                                    <span>
+                                        <i class=" fa fa-heart"></i>
+                                    </span>
+                                </button>
+                            </li><br>
+                            <div>
+                                <li>
+                                    <button text-center *ngIf="!item1.AddedToCart" (click)="addToCart(item1)">
+                                        <span>
+                                            <i class="fa fa-shopping-cart "></i>
+                                        </span>
+                                    </button>
+                                </li><br>
+                                <li>
+                                    <button style=" text-align: center; color: #fff;
+                                    background-color: #BFA947;
+                                    -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+                                            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);" *ngIf="item1.AddedToCart"
+                                        (click)="removeFromCart(item1)">
+                                        <span> <i class="fa fa-shopping-cart "></i> </span>
+                                    </button>
+                                </li><br>
+                            </div>
+
+                        </ul>
+                    </div>
+                </div>
+                <div class="slide-text">
+                    <div class="product-content">
+                        <h3 [routerLink]="item1.ProductUrl" class="title myproduct">{{item1.Name}} </h3>
+                        <span class="price"><i
+                                class="far fa-money-bill-alt priceIcon"></i>&nbsp;{{item1.Price}}&nbsp;{{'shared.SAR'|translate}}</span><br>
+                        <span class="rate"><i class="fa fa-star"></i></span>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+    </div>
+    <div class="col-12 text-center" *ngIf="featuredProducts.length>=4">
+        <a class="btn btn-primary gold text-white " [routerLink]="['/featured-products']">
+            {{'home.showmore'|translate}}</a>
+    </div>
+</div>
+
+
+
+<!-- deals -->
+
+<div id="deals" class="deals">
+    <h1 class="text-center mt-5 mb-5 w-100 animated fadeInUp">{{'home.offers'|translate}}</h1>
+    <div ng2-carouselamos class="slides-wrapper container " [items]="bestDailyOffers | async" [width]="900"
+        [$prev]="prev" [$next]="next" [$item]="item2" style="direction: initial;">
+
+        <ng-template #prev>
+            <button id="left" type="button" role="presentation" class="owl-prev"><span
+                    aria-label="Previous">‹</span></button>
+        </ng-template>
+        <ng-template #next>
+
+            <button id="right" type="button" role="presentation" class="owl-next"><span
+                    aria-label="Next">›</span></button>
+        </ng-template>
+    </div>
+
+    <div class=" col-3">
+        <ng-template #item2 let-item2>
+
+            <div class="items product-grid2">
+                <div class="product-image2">
+                    <a>
+                        <img class="pic-1 " onError="this.src='../../../assets/images/nophoto.png';"
+                            src="{{item2.Image}}">
+                    </a>
+                    <div class="img__overlay">
+                        <ul class="social">
+                            <li><a (click)="ProductDetails(item2.id)"><i class=" icon fa fa-eye"></i></a>
+                            </li><br>
+
+                            <li *ngIf="!item2.AddedToWishlist">
+                                <button (click)="addToWishList(item2)">
+                                    <i class="fa fa-heart"></i>
+                                </button>
+                            </li><br>
+                            <li *ngIf="item2.AddedToWishlist">
+                                <button style="  color: #fff;
+                                background-color: #BFA947;
+                                -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+                                        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);" (click)="removeFromWishList(item2)">
+                                    <span>
+                                        <i class=" fa fa-heart"></i>
+                                    </span>
+                                </button>
+                            </li><br>
+                            <div>
+                                <li>
+                                    <button *ngIf="!item2.AddedToCart" (click)="addToCart(item2)">
+                                        <span>
+                                            <i class="fa fa-shopping-cart "></i>
+                                        </span>
+                                    </button>
+                                </li><br>
+                                <li>
+                                    <button *ngIf="item2.AddedToCart" style="  color: #fff;
+                                background-color: #BFA947;
+                                -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+                                        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);" (click)="removeFromCart(item2)">
+                                        <span> <i class="fa fa-shopping-cart "></i> </span>
+                                    </button>
+                                </li><br>
+                            </div>
+
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="slide-text">
+                    <div class="product-content ">
+                        <h3 [routerLink]="item2.ProductUrl" class="title myproduct">
+                            {{item2.Name}}</h3>
+
+                        <span class="price"><i
+                                class="far fa-money-bill-alt priceIcon"></i>&nbsp;{{item2.Price}}&nbsp;{{'shared.SAR'|translate}}</span><br>
+                        <span class="rate">{{item2.RatingAvg}}<i class="fa fa-star"></i></span><br>
+                        <label class="discount">{{'home.Discount'|translate}} : </label>
+                        <p>{{item2.Discount}}</p>
+                    </div>
+                </div>
+            </div>&nbsp;&nbsp;
+        </ng-template>
+    </div>
+    <div class="col-12 text-center" *ngIf="bestDailyOffers.length>=4">
+        <a class="btn btn-primary gold text-white " [routerLink]="['/offers']"> {{'home.showmore'|translate}}</a>
+    </div>
+</div>
+
+
+<!-- get app -->
+<section class="getapp">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-6">
+                <h2 class="animated fadeInUp pt-5" data-wow-delay="0.2s">{{'home.getAppTitle' | translate}}</h2>
+                <p class="animated fadeInUp" data-wow-delay="1s">{{'home.ChooseNativeApp' | translate}}</p>
+                <div class="btns animated fadeInUp" data-wow-delay="0.5s">
+                    <a href="#"> <img src="../../../assets/images/google.png" alt="" class="img-fluid"> </a>
+                    <a href="#"> <img src="../../../assets/images/apple.png" alt="" class="img-fluid"> </a>
+                </div>
+            </div>
+            <div class="app col-xl-6 wow animated fadeInUp" data-wow-delay="0.7s">
+                <br>
+                <img src="../../../assets/images/app.png" alt="" class="img-fluid">
+            </div>
+        </div>
+
+    </div>
+</section>

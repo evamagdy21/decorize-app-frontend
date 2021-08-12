@@ -1,0 +1,74 @@
+<div class="container-fluid" style="margin-top: 13rem;">
+  <div class="row fullscreen  d-flex ">
+    <div class="header text-center col-12">
+      <h2 class="mb-md-4 text-uppercase"><span>{{'contact-us.title'|translate}}</span></h2>
+      <!-- <p>{{'account.Home/Register'|translate}}</p><br> -->
+    </div>
+    <div class="col-12 content" style="text-align: -webkit-center;text-align: -moz-center;">
+      
+      <form role="form" novalidate [formGroup]="form" (ngSubmit)="save()">
+        <div class="text-center margin-v-20" *ngIf="resultViewModel">
+          <div class="alert alert-success" *ngIf="resultViewModel.Success">
+            <h3>{{resultViewModel.Message}}</h3>
+          </div>
+          <div class="alert alert-danger" *ngIf="!resultViewModel.Success">
+            <h3>{{resultViewModel.Message}}</h3>
+          </div>
+        </div>
+        <fieldset>
+          <br><br><br><br>
+          <div class="form-group has-feedback"
+            [ngClass]="{'has-error':(!form.controls['Name'].valid && form.controls['Name'].touched)}">
+            <label class="control-label gridHead">{{'contact-us.name'|translate}}</label>
+            <input type="text" class="form-control" formControlName="Name" />
+            <div class="text-danger" *ngIf="!form.controls['Name'].valid && form.controls['Name'].touched">
+              <div *ngIf="form.controls['Name'].hasError('pattern')">{{'shared.validation.only-letters'|translate}}
+              </div>
+              <div *ngIf="form.controls['Name'].hasError('required')">{{'shared.validation.required'|translate}}</div>
+              <p *ngIf="form.controls['Name'].hasError('minlength')">{{'shared.validation.min-length'|translate}}</p>
+              <p *ngIf="form.controls['Name'].hasError('maxlength')">{{'shared.validation.max-length'|translate}}</p>
+            </div>
+
+          </div>
+          <div class="form-group has-feedback"
+            [ngClass]="{'has-error':(!form.controls['Email'].valid && form.controls['Email'].touched)}">
+            <label class="control-label gridHead">{{'contact-us.email'|translate}}</label>
+            <input type="text" class="form-control" formControlName="Email" />
+            <div class="text-danger"
+              *ngIf="!form.controls['Email'].valid && (form.controls['Email'].touched|| form.controls['Email'].dirty )  ">
+              <div *ngIf="form.controls['Email'].hasError('required')">{{'shared.validation.required'|translate}}</div>
+              <div *ngIf="form.controls['Email'].hasError('pattern')&&!form.controls['Email'].hasError('required')">
+                {{'shared.validation.invalid-email'|translate}}</div>
+            </div>
+          </div>
+          <div class="form-group has-feedback"
+            [ngClass]="{'has-error':(!form.controls['Message'].valid&& form.controls['Message'].touched)}">
+            <label class="control-label gridHead">{{'contact-us.message'|translate}}</label>
+            <textarea type="text" class="form-control" formControlName="Message" ></textarea>
+            <div class="text-danger"
+              *ngIf="!form.controls['Message'].valid && form.controls['Message'].touched">
+              <p *ngIf="form.controls['Message'].hasError('minlength')">{{'shared.validation.min-length'|translate}}</p>
+              <div *ngIf="form.controls['Message'].hasError('required')">{{'shared.validation.required'|translate}}</div>
+            </div>
+          </div>
+          
+          
+          <div style="text-align: initial;">
+            <button [disabled]="!form.valid" *ngIf="!processing"
+              class="btn btn-primary registerbtn">{{'contact-us.send'|translate}}</button>
+            <p class="text-center"> <img [hidden]="!processing" src="/assets/images/loader2.gif" width="40" height="40">
+            </p>
+          </div>
+          <br>
+        </fieldset>
+      </form>
+    </div>
+    <!-- 
+    <button class="btn btn-lg facebook btn-block" [disabled]="processing" (click)="socialSignIn('facebook')">
+      {{'account.facebook-login'|translate}}
+      <i class="fa fa-facebook-square fa-1x"></i>
+    </button> -->
+
+  </div>
+</div>
+

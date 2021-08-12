@@ -1,0 +1,28 @@
+@import "~ng-snotify/styles/material.css";
+@import '~ngx-bar-rating/themes/br-default-theme' ;
+
+@font-face {
+    font-family: 'NotoKufiArabicRegular';
+    src: url('/assets/css/font/NotoKufiArabic.eot');
+    src: url('/assets/css/font/NotoKufiArabic.woff') format('woff'), url('/../assets/css/font/NotoKufiArabic.ttf') format('truetype'), url('/../assets/css/font/NotoKufiArabic.svg#NotoKufiArabic-Regular') format('svg'), url('/../assets/css/font/NotoKufiArabic.eot?#iefix') format('embedded-opentype');
+    font-weight: normal;
+    font-style: normal;
+  }
+  /*
+  @font-face {
+    font-family: 'NotoKufiArabic-Bold';
+    src: url('/../assets/css/font/NotoNaskhArabic-Bold.eot');
+    src: url('/../assets/css/font/NotoNaskhArabic-Bold.woff2') format('woff2'), url('/../assets/css/font/NotoNaskhArabic-Bold.woff') format('woff'), url('/../assets/css/font/NotoNaskhArabic-Bold.ttf') format('truetype'), url('/../assets/css/font/NotoNaskhArabic-Bold.svg#NotoKufiArabic-Bold') format('svg'), url('/../assets/css/font/NotoNaskhArabic-Bold.eot?#iefix') format('embedded-opentype');
+    font-weight: normal;
+    font-style: normal;
+  } */
+@font-face {
+  font-family: 'Ubuntu';
+  src: local('âک؛'), url('/assets/css/fonts/NeoSansArabicRegular.ttf') format('truetype');
+  font-weight: normal;
+  /* font-size: 18rem; */
+}
+html , body{
+  max-width: 100%;
+  overflow-x: hidden;
+}

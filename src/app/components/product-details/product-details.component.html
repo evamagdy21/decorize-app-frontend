@@ -1,0 +1,165 @@
+<ng-snotify></ng-snotify>
+<div class="container-fluid" style="margin-top: 13rem;">
+  <div class="row  text-center">
+    <div class="headerproductdetails text-center col-lg-12 col-md-12 col-sm-12 col-xs-12 listCategoryProduct"
+      *ngIf="isLoading">
+      <h1 class="mb-md-4"><span>{{product.Name}}</span></h1>
+      <p>{{'product.Home/productDetails'|translate}}</p>
+    </div>
+  </div>
+  <!--row-->
+</div>
+<!--container-fluid-->
+<div class="container">
+  <div class="row">
+    <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-xs-12">
+      <div *ngIf="product.Image">
+        <ngx-gallery [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
+      </div>
+    </div>
+    <!--col-6-->
+    <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-xs-12" style="text-align: justify;">
+      <h3 class="textofframe"> {{product.Name}} </h3>
+      <br>
+      <h5 class="aofreviews">({{product.RatingCount}} &nbsp;{{'product.CustomerReviews'|translate}})</h5>
+
+
+      <p><i class="far fa-money-bill-alt priceIcon"></i>&nbsp;{{product.OldPrice}}&nbsp;{{'shared.SAR'|translate}}</p>
+      <br>
+      <div *ngIf="product.Discount>0" class="discount">
+        <span class="btn btn-danger percintageBTN">{{product.Discount}}%</span>
+
+      </div>
+      <!-- <h5 style="text-align: auto;
+                  text-align: -webkit-auto;">
+        <span class="colorBittersweet Englishfont priceNum2">{{product.NewPrice}} </span>
+        <span class="colorBittersweet  pricetxt2 text-uppercase">{{'product.coin'|translate}}</span>
+      </h5> -->
+      <br>
+      <!-- description -->
+      <div style=" text-align: initial;">
+        <div [innerHTML]="product.Description"></div>
+        <p class="categoryp">
+          {{'product.department'|translate}}:
+          <span>{{product.Department}}</span>
+        </p>
+      </div>
+      <br>
+      <div  *ngIf="product.Stock>0">
+        <button *ngIf="!product.AddedToCart" class="btn text-uppercase addtocartbtn1" (click)="addToCart(product)">
+          <!-- <i class="fas fa-shopping-bag"></i> -->
+          <!-- {{'product.add-cart'|translate}} -->
+          <span> {{'product.add-cart'|translate}}</span>
+        </button>
+
+        <button *ngIf="product.AddedToCart" (click)="removeFromCart(product)" class="btn  addtocartbtn1">
+          <span>
+            <!-- <i class="fas fa-shopping-bag"></i> -->
+
+          </span> {{'product.delete-cart'|translate}}</button>
+      </div>
+      <div *ngIf="product.Stock==0">
+        <div class="col-xs-12 col-md-12 text-center margin-top-16">
+          <a class="btn btn-primary buttonList unavilable margin-top-15 margin-bottom-10 addtocartBTN">
+            <span class="hidden-sm hidden-xs">
+              {{'shared.unavilable'|translate}}
+            </span>
+          </a>
+        </div>
+      </div>
+      <hr class="hr">
+      <!-- department name -->
+
+
+    </div>
+    <!--col-4-->
+    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+      <!-- heart -->
+      <a *ngIf="!product.AddedToWishlist" (click)="addToWishList(product)" class="btn    buttonweb2">
+        <i class="fa fa-heart fa-2x"></i> </a>
+      <a *ngIf="product.AddedToWishlist" (click)="removeFromWishList(product)" class="btn   buttonweb2">
+        <i class="fa fa-heart fa-2x heartred"></i> </a>
+      <br><br>
+      <!-- star -->
+      <div class=" ratings">
+        <p>
+          <a>
+            <product-rating [value]="product.RatingAvg" class=" padding-less"></product-rating>
+          </a>
+        </p>
+      </div>
+      <br><br>
+    </div>
+    <!--col-2-->
+  </div>
+  <!--row-->
+  <div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+      <div class="card card2">
+        <ul class="nav nav-tabs tabs-detils" role="tablist">
+          <li role="presentation" class="active">
+            <a href="#productDescription" aria-controls="productDescription" role="tab" data-toggle="tab">
+              <span>{{'product.description'|translate}}</span>
+            </a>
+          </li>
+          <li role="presentation">
+
+            <a href="#home" aria-controls="home" role="tab" data-toggle="tab">
+              <span>{{'product.specifications'|translate}}</span>
+            </a>
+          </li>
+          <li role="presentation">
+            <a href="#reviews" aria-controls="reviews" role="tab" data-toggle="tab">
+              <span>
+                {{'product.reviews'|translate}}
+              </span>
+            </a>
+          </li>
+        </ul>
+        <!-- Tab panes -->
+        <div class="tab-content" style="text-align: justify; ">
+          <div role="tabpanel" class="tab-pane active" id="productDescription" [innerHtml]="product.Description">
+          </div>
+          <div role="tabpanel" id="home" class="tab-pane ">
+            <div *ngFor="let specifiction of productSpecifications">
+              <h4>
+                <b>{{specifiction.SpecificationName }}</b>
+              </h4>
+              {{specifiction.SpecificationValueName }}
+            </div>
+            <!-- End off row -->
+          </div>
+          <div role="tabpanel" class="tab-pane" id="reviews">
+            <div *ngIf="productReviews.length > 0">
+              <div *ngFor=" let review of
+                productReviews">
+                <div class="row">
+                <div class="col-xl-2 col-lg-2 col-md-2 col-sm-12 col-xs-12"><br>
+                  <img class="img-fluid img-responsive cartProduct" [src]="review.CustomerImage" onError="this.src='../../../assets/images/nophoto.png';">
+                  <br>
+                </div>
+                <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                  <br>
+                  <h5 class="name">{{review.CustomerName }}</h5>&nbsp;&nbsp;&nbsp;
+                  <p style="display: inline"> {{ review.CreatedDate | date :  "dd/MM/y" }}</p>
+                  <p>{{review.Review }}</p>
+                </div>
+                <div class="col-xl-2 col-lg-2 col-md-2 col-sm-12 col-xs-12">
+                  <product-rating [value]="review.RatingCount"></product-rating>
+                </div>
+              </div>
+              </div><br>
+            </div>
+            <div *ngIf="productReviews.length == 0">
+              {{'product.no-rating'|translate}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--row-->
+  <hr class="hr">
+  <!-- submit reviews -->
+</div>
+<!--container-->

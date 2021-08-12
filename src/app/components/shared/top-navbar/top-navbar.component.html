@@ -1,0 +1,48 @@
+<ng-snotify></ng-snotify>
+<div>
+  <nav class="navbar navbar-expand-md bg-transparent fixed-top {{className}}" #stickyMenu id="navbar">
+    <div class="container-fluid">
+      <div class="d-flex w-auto order-0 brand">
+        <a class="navbar-brand" href="index.html"><img [src]="imgSrc" alt="" class="img-fluid"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsingNavbar">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+      <div class="navbar-collapse collapse justify-content-center order-2 w-50" id="collapsingNavbar">
+        <ul class="navbar-nav">
+          <li class="nav-item  ">
+            <a class="nav-link" routerLinkActive="active" [routerLink]="['/home']">{{'navbar.Home'| translate}}</a>
+          </li>&nbsp;&nbsp;
+          <li class="nav-item">
+            <a class="nav-link " routerLinkActive="active" style="cursor:pointer" [routerLink]="['/search']">{{'navbar.ourProducts'|translate}}</a>
+          </li>&nbsp;&nbsp;
+          <li class="nav-item">
+            <a class="nav-link " routerLinkActive="active" routerLink="/page/About Us">{{'navbar.AboutUs'|translate}}</a>
+          </li>&nbsp;&nbsp;
+          <li class="nav-item">
+            <a class="nav-link " routerLinkActive="active" routerLink="/page/contact-us">{{'navbar.contactUs'|translate}}</a>
+          </li>&nbsp;&nbsp;
+        </ul>
+      </div>
+      <span class="navbar-text w-auto text-right order-1 order-md-last cart_r">
+        <label class="">
+          <a class="rounded-circle cart cursor" aria-haspopup="true" (click)="GoToCart()" aria-expanded="false" style="  background: #BFA947;">
+            <i class="fa fa-shopping-cart "></i> <span>{{cartQTY}}</span>
+          </a>
+
+        </label>
+        <a *ngIf="isAuthorized" class="rounded-circle cursor" (click)="GoToWishList()"><i class="fa fa-heart "></i><span
+            class="badge">{{wishlistQTY}}</span></a>
+        <a #myTarget *ngIf="isAuthorized" href="#" class="dropdown-toggle rounded-circle cursor" data-toggle="dropdown"
+          role="button" (click)="loadNotifications()">
+          <i class="fa fa-bell icon-white"></i>
+          <span class="badge">{{notificationCount}}</span>
+        </a>
+        <ul class="dropdown-menu notify-drop pull-right">
+          <template class="drop-content" #notificationitemscontainer>
+          </template>
+        </ul>
+      </span>
+    </div>
+  </nav>
+</div>

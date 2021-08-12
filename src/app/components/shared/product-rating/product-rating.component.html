@@ -1,0 +1,10 @@
+<!--component html goes here -->
+<div class="ratings">
+    <div *ngIf="value>=1">
+        <span *ngFor="let x of [1,2,3,4,5]" class="fa fa-star stare-ctive" [class.stare-ctive]="value>=x"
+            [class.stare-off]="value<x"></span>
+    </div>
+    <div *ngIf="value<1">
+      {{'product.no-rating'|translate}}
+    </div>
+</div>

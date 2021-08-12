@@ -1,0 +1,13 @@
+.header {
+  background-color: #f6f6f6;
+  color: #4b4b4b;
+  min-height: 57px
+}
+
+.content {
+  margin-top: 5px;
+  min-height: calc(100vh - 350px);
+  box-sizing: border-box;
+  padding-left: 10%;
+  padding-right: 10%
+}

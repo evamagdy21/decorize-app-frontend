@@ -1,0 +1,22 @@
+<section class="content" style="margin-top: 13rem;">
+    <div class="container">
+      <div class="row margin-v-20">
+        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+          <user-side-menu></user-side-menu>
+        </div>
+        <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12  text-center ">
+          <div class="col-xs-12 text-center margin-v-20" *ngIf="resultViewModel">
+            <div class="alert alert-success" *ngIf="resultViewModel.Success&& resultViewModel.Data ==true ">
+              <h3>{{resultViewModel.Message}}</h3>
+            </div>
+            <div class="alert alert-danger" *ngIf="!resultViewModel.Success">
+              <h3>{{resultViewModel.Message}}</h3>
+            </div>
+            <div class="alert alert-danger" *ngIf="resultViewModel.Success && resultViewModel.Data == false ">
+              <h3>{{resultViewModel.Message}}</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>

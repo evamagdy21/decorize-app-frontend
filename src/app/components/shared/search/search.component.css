@@ -1,0 +1,144 @@
+
+.home_banner {
+    background: url(../../../../assets/images/hero.jpg) no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    padding: 160px 0;
+    text-align: center;
+    position: relative;
+    color: #fff;
+  }
+  .home_banner:before {
+    content: "";
+    background: #ffffff59;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .search {
+    z-index: 1;
+  }
+  
+  .search h1 {
+    color: #BFA947;
+    font-weight: bolder;
+    font-family: lato black;
+    font-size: 55px;
+  }
+  
+  .search h1 span {
+    font-size: 35px;
+    font-family: lato light;
+    letter-spacing: 21px;
+  }
+  
+  .search h3 {
+    font-family: 'Dancing Script', cursive;
+    
+    color: #0D2F47;
+    font-size: 100px;
+  }
+  
+  .has-search .form-control {
+    border: transparent;
+    height: 57px;
+    line-height: 57px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 0;
+  }
+  
+  .search select {
+    border: transparent;
+    height: 57px;
+    line-height: 25px;
+    background: rgba(255, 255, 255, 0.8);
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+  }
+  
+  .search button {
+    height:40px;
+    padding-right: 30px;
+    padding-left: 30px;
+  }
+  .btn-primary {
+    color: #fff;
+    background-color: #BFA947 !important;
+    border-color: #BFA947 !important;
+  }
+  
+  .btn-primary.gold {
+    background: #BFA947;
+    border: none;
+    border-radius: 0px;
+    color: #fff !important;
+    cursor: pointer;
+  }
+  @media screen and (max-width: 576px) {
+    .brand {
+      border-right: 1px solid transparent !important;
+    }
+    .cart_r {
+      border-left: 1px solid transparent !important;
+    }
+    .fixed-top {
+      top: 60px;
+      padding: 8px;
+    }
+    .search h1 {
+      font-size: 30px;
+    }
+    .search h1 span {
+      font-size: 20px;
+      letter-spacing: 10px;
+    }
+    .search h3 {
+      font-size: 68px;
+    }
+    .home_banner form {
+      padding: 25px;
+    }
+    .home_banner form .form-row .col-auto {
+      width: 100%;
+    }
+    .home_banner form .form-row .col-auto .search button {
+      display: block;
+      width: 100%;
+    }
+    /* .sticky-top , .fixed-top {
+    position: relative;
+  } */
+    .owl-carousel .owl-nav button.owl-next, .owl-carousel .owl-nav button.owl-prev {
+      display: none;
+    }
+    .deals {
+      height: auto;
+    }
+    .getapp .btns a img {
+      margin-bottom: 20px;
+    }
+    .app {
+      height: auto;
+    }
+    .app img {
+      top: 0;
+      display: none;
+    }
+    footer img {
+      margin-bottom: 20px;
+    }
+    .navbar-collapse {
+      background: #fff;
+      padding: 10px;
+    }
+  }
+  .btn-primary.gold{
+    background: #BFA947;
+    border: none;
+    border-radius: 0px;
+    color: #fff !important;
+    cursor: pointer;
+    height: 40px;
+}

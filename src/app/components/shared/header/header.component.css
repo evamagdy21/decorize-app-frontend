@@ -1,0 +1,21 @@
+.social-media {
+  display: inline-block;
+  float: left;
+  margin-bottom: 0px;
+  padding-left: 0;
+}
+
+.social-media li {
+  display: inline-block;
+}
+
+.social-media a {
+  color: #fff;  
+  margin-right: 3px;
+  margin-left: 3px;
+}
+.icon{
+  color: #BFA947;
+  margin-right: 3px;
+  margin-left: 3px;
+}

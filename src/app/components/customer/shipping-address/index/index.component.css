@@ -1,0 +1,28 @@
+.delbtn{
+    background-color: transparent;
+    border:1px solid #d1d1d1;
+    border-radius: 0px;
+  }
+  .btn-primary {
+    color: #fff;
+    background-color: #BFA947 !important;
+    border-color: #BFA947 !important;
+  }
+  
+  .btn-primary.gold {
+    background: #BFA947;
+    border: none;
+    border-radius: 0px;
+    width: 8rem;
+    color: #fff !important;
+    cursor: pointer;
+  }
+  .details{
+    border:1px solid #d1d1d1;
+    padding: 3rem;
+    text-align: initial;
+  }
+  .checkmark
+  {
+    text-align: center;color: #0d2f47;font-weight: bold
+  }

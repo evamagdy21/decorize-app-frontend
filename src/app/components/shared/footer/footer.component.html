@@ -1,0 +1,73 @@
+<!-------------------------------Start footer---------------------------------------------->
+<simple-notifications></simple-notifications>
+
+
+
+
+<footer class="site-footer bg-white pt-5 wow fadeInUp">
+  <div class="container">
+      <div class="row">
+          <div class="col-md-3">
+              <img src="../../../../assets/images/logo.png" alt="" class="img-fluid">
+          </div>
+          <div class="col-md-3 col-6 ml-auto">
+              <h5 class="footer-heading mb-4">{{'footer.information' | translate}}</h5>
+              <ul class="list-unstyled">
+                  <li *ngFor="let item of pagesList"><a routerLink="/page/{{item.Name}}">{{item.Name}}</a></li>
+                  <li><a routerLink="/page/contact-us">{{'footer.ContactUs' |translate}}</a></li>
+              </ul>
+          </div>
+          <div class="col-md-3 col-6">
+              <h5 class="footer-heading mb-4">{{'footer.MYACCOUNT' |translate}}</h5>
+              <ul class="list-unstyled">
+                  <li><a routerLink='/login'>{{'footer.login' |translate}}</a></li>
+                  <li><a routerLink='/register'>{{'footer.Register' |translate}}</a></li>
+         
+              </ul>
+          </div>
+          <div class="col-md-3">
+              <h5 class="footer-heading mb-4">{{'footer.Subscribe'|translate}}</h5>
+      
+
+
+              <form [formGroup]="form" (ngSubmit)="save()">
+           
+                  <div class="input-group ">
+
+                    <input type="text" class="form-control border-secondary bg-transparent" formControlName="Email"
+                    placeholder="{{'footer.EnterEmail'|translate}}" style="font-size: 11px;" aria-label="Enter Email" aria-describedby="button-addon2">
+                    <div class="text-left text-danger" *ngIf="!form.controls['Email'].valid && (form.controls['Email'].touched|| form.controls['Email'].dirty )  ">
+                    <div *ngIf="form.controls['Email'].hasError('required')">{{'shared.validation.required'|translate}}</div>
+                    <div *ngIf="form.controls['Email'].hasError('pattern')&&!form.controls['Email'].hasError('required') ">{{'shared.validation.invalid-email'|translate}}</div>
+                    </div>
+                  
+                    <div class="input-group-btn">
+
+                    <button class="btn btn-primary gold text-white" type="button" [disabled]="!form.valid" type="submit"
+                      id="button-addon2">{{'footer.OK' |translate}}</button>
+                    </div>
+                  </div>
+              </form> 
+    
+              <br>
+              <div class="social">
+                  <a href="#" class="p-2"><i class="fab fa-facebook-f"></i> </a>
+                  <a href="#" class="p-2"><i class="fab fa-twitter"></i> </a>
+                  <a href="#" class="p-2"><i class="fab fa-instagram"></i> </a>
+              </div>
+          </div>
+      </div>
+
+  </div>
+      <div class="col-md-12 pt-3 pb-2 mt-3 text-center copyrights">
+          <p>
+
+              Copyright &copy;
+              <script>document.write(new Date().getFullYear());</script> All rights reserved Made By <a
+                   target="_blank">Eva Magdy</a>
+
+          </p>
+      </div>
+
+</footer>
+<!-------------------------------End footer------------------------------------------------>

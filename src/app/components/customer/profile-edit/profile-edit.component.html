@@ -1,0 +1,85 @@
+<!--component html goes here -->
+
+<section class="content" style="margin-top: 16rem;">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+          <user-side-menu></user-side-menu>
+        </div>
+        <!-- <div class="col-xs-3"> </div> -->
+        <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
+          <div class="row productFilter clearfix">
+            <div class="pull-left">
+              <h3>{{'menu.account-setting'|translate}}</h3>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12 text-center margin-v-20" *ngIf="resultViewModel">
+              <div class="alert alert-success" *ngIf="resultViewModel.Success">
+                <h3>{{resultViewModel.Message}}</h3>
+              </div>
+              <div class="alert alert-danger" *ngIf="!resultViewModel.Success">
+                <div *ngFor="let error of errors">{{ error.Message }}</div>
+              </div>
+            </div>
+            <div class="col-md-12 col-sm-12 col-xs-12">
+
+              <form novalidate [formGroup]="form" (ngSubmit)="save()">
+
+                <div class="form-group has-feedback"
+                  [ngClass]="{'has-error':(!form.controls['Name'].valid && form.controls['Name'].touched)}">
+                  <input type="text" class="form-control" formControlName="Name"
+                    placeholder="{{'shared.name'|translate}}" />
+                  <div class="text-left  text-danger"
+                    *ngIf="!form.controls['Name'].valid && form.controls['Name'].touched">
+                    <div *ngIf="form.controls['Name'].hasError('pattern')">
+                      {{'shared.validation.only-letters'|translate}}</div>
+                    <div *ngIf="form.controls['Name'].hasError('required')">{{'shared.validation.required'|translate}}
+                    </div>
+                    <p *ngIf="form.controls['Name'].hasError('minlength')">{{'shared.validation.min-length'|translate}}
+                    </p>
+                    <p *ngIf="form.controls['Name'].hasError('maxlength')">{{'shared.validation.max-length'|translate}}
+                    </p>
+
+                  </div>
+
+                </div>
+                <div class="form-group has-feedback"
+                  [ngClass]="{'has-error':(!form.controls['Email'].valid && form.controls['Email'].touched)}">
+                  <input type="text" class="form-control" formControlName="Email"
+                    placeholder="{{'account.email'|translate}}" />
+                  <div class="text-left text-danger"
+                    *ngIf="!form.controls['Email'].valid && (form.controls['Email'].touched|| form.controls['Email'].dirty )  ">
+                    <div *ngIf="form.controls['Email'].hasError('required')">{{'shared.validation.required'|translate}}
+                    </div>
+                    <div
+                      *ngIf="form.controls['Email'].hasError('pattern')&&!form.controls['Email'].hasError('required')">
+                      {{'shared.validation.invalid-email'|translate}}</div>
+                  </div>
+                </div>
+                <div class="form-group has-feedback"
+                  [ngClass]="{'has-error':(!form.controls['Mobile'].valid && form.controls['Mobile'].touched)}">
+                  <input type="text" class="form-control" formControlName="Mobile"
+                    placeholder="{{'account.phone'|translate}}" />
+                  <div class="text-left  text-danger"
+                    *ngIf="!form.controls['Mobile'].valid && form.controls['Mobile'].touched">
+                    <div *ngIf="form.controls['Mobile'].hasError('pattern')">
+                      {{'shared.validation.PhoneNumber-Valiation'|translate}}</div>
+                    <div *ngIf="form.controls['Mobile'].hasError('required')">{{'shared.validation.required'|translate}}
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-12 col-sm-12 col-xs-12 text-right padding-v-10">
+                  <button class="btn btn-primary gold text-white " [disabled]="!form.valid">
+                    {{'account.update'|translate}}</button>
+                </div>
+              </form>
+              <br><br>
+            </div>
+          </div>
+        </div>
+        <!-- <div class="col-xs-3"> </div> -->
+      </div>
+    </div>
+
+  </section>

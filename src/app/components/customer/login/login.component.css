@@ -1,0 +1,61 @@
+.panel-title {
+    /* padding: 5px 10px; */
+    color: #428BCA !important;
+    font-weight: 700;
+    font-size: 18px !important;
+}
+
+
+.login{
+    font-weight: 700 !important;
+    font-size: 18px !important;
+}
+
+hr{
+    margin-top: 15px;
+    margin-bottom: 0px;
+    height: 3px;
+    background-color:red;
+}
+.within{
+    white-space: nowrap;
+}
+.headerlogin
+{
+  background-color:#f6f6f6;
+  color:#4b4b4b;
+}
+.loginbtn
+{
+  background-color:#bfa947;
+  border:1px solid #bfa947;
+  width: 127px;
+}
+.lostpassword
+{
+  color:#bfa947;
+  cursor: pointer;
+}
+form{
+    width:50%;
+}
+.has-feedback{
+    /* text-align: -webkit-auto; */
+    text-align: justify;
+}
+i{
+    text-align: auto;
+}
+.facebook{
+    border:1px solid #bfa947;
+    width: 60px;
+    background-color: #365899;
+    color: white;
+}
+.content {
+    margin-top: 5px;
+    min-height: calc(89.5vh - 350px);
+    box-sizing: border-box;
+    padding-left: 10%;
+    padding-right: 10%
+  }

@@ -1,0 +1,33 @@
+[
+    {
+        "ID": 1,
+        "Name": "Fresh Food"
+ 
+        
+    },
+    {
+        "ID": 2,
+        "Name": "Baby Products"
+
+    },
+    {
+        "ID": 3,
+        "Name": "Cleaning & Household"
+     
+    },
+    {
+        "ID": 4,
+        "Name": "Beauty & Personal Care"
+
+        
+    },
+    {
+        "ID": 5,
+        "Name": "Health & Fitness"
+    },
+    {
+        "ID": 6,
+        "Name": "Fashion"
+
+    }
+]

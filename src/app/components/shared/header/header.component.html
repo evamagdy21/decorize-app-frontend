@@ -1,0 +1,67 @@
+<!--=========-TOP_BAR============-->
+
+<nav class="topBar">
+  <div class="container-fluid">
+    <ul class="topBarNav pull-left hidden-lg hidden-md">
+
+    </ul>
+    <ul class="topBarNav pull-right">
+
+      <li class="dropdown" *ngIf="!isLoggedIn">
+        <a routerLink='/register' data-close-others="false">{{'header.new-user'|translate}}</a>
+      </li>
+      <li class="dropdown" *ngIf="!isLoggedIn">
+        <a routerLink='/login' data-close-others="false">
+          {{'account.login'|translate}}</a>
+      </li>
+      
+      <li class="dropdown nav-women" *ngIf="isLoggedIn" [class.open]="isSelected" (mouseover)="changeSelecteion()"
+        (mouseout)="changeSelecteion()">
+        <!-- <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="false"> -->
+        <a> {{'shared.welcome'|translate}} : {{ currentUser.username }}
+          <i class="fa fa-angle-down margin-right-10"></i>
+        </a>
+        <!-- </a> -->
+        <ul class="dropdown-menu dropdown-menu-left">
+          <li>
+            <a routerLink="/orders"><i class="fa fa-list-alt"></i> {{'menu.myOrders'|translate}}</a>
+            <!-- <a href="/orders">مشترياتي</a> -->
+          </li>
+          <li>
+            <a routerLink="/shipping-address"><i class="fa fa-map-marker"></i>
+              {{'menu.MyAddresses'|translate}} </a>
+          </li>
+          <li>
+            <!-- <a href="/wishlist">المفضلة</a> -->
+
+            <a routerLink="/wishlist"><i class="fas fa-heart"></i> {{'menu.MyFavorites'|translate}} </a>
+          </li>
+          <li>
+            <a routerLink="/profile-edit"><i class="fa fa-cog" aria-hidden="true"></i>
+              {{'menu.account-setting'|translate}}</a>
+          </li>
+          <li>
+            <a routerLink="/password-edit">
+
+              <i class="fa fa-lock"></i>
+              {{'shared.change-password'|translate}}
+            </a>
+          </li>
+          <li class="">
+            <a href="#" (click)="logout()"><i class="fa fa-sign-out-alt"></i> {{'account.logout'|translate}}</a>
+          </li>
+
+        </ul>
+      </li>
+
+      <li>
+        <a routerLink="/change-lang/ar" skipLocationChange [class.disabled]="isDiabledLink('ar')">ع</a>
+      </li>
+      <li class="">
+
+        <a routerLink="/change-lang/en" skipLocationChange [class.disabled]="isDiabledLink('en')">En</a>
+      </li>
+
+    </ul>
+  </div>
+</nav>

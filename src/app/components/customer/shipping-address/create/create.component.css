@@ -1,0 +1,27 @@
+
+.btn-primary {
+    color: #fff;
+    background-color: #BFA947 !important;
+    border-color: #BFA947 !important;
+  }
+  
+  .btn-primary.gold {
+    background: #BFA947;
+    border: none;
+    border-radius: 0px;
+    width: 10rem;
+    height: 3.5rem;
+    color: #fff !important;
+    cursor: pointer;
+    
+  }
+
+  
+  select:-moz-focusring {
+    color: transparent;
+    text-shadow: 0 0 0 #000;
+  }
+  .erorrMsg{
+    text-align: initial;
+  }
+

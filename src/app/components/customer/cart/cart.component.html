@@ -1,0 +1,89 @@
+<div class="container-fluid" style="margin-top: 13rem;">
+  <div class="row fullscreen d-flex a">
+    <div class="header text-center col-12">
+      <h2 class="mb-md-4 text-uppercase"><span>{{'cart.cart'|translate}}</span></h2>
+      <p>{{'cart.Home/cart'|translate}}</p><br><br>
+    </div>
+  </div><br><br>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-12 text-center ">
+      <table class="center table-responsive ">
+        <tr class="text-uppercase">
+          <th>{{'cart.Product'|translate}}</th>
+          <th>{{'cart.Price'|translate}}</th>
+          <th>{{'cart.Quantity'|translate}}</th>
+          <th>{{'cart.Total'|translate}}</th>
+          <th>{{'cart.DeleteProduct'|translate}}</th>
+        </tr>
+
+        <tr *ngFor="let product of cartProducts ">
+          <td style="color:#bfa947;">
+            <a [routerLink]="product.ProductUrl">
+              <img class="img-responsive img" alt="img" onError="this.src='../../../assets/images/nophoto.png';"
+                src={{product.Image}}>
+              <p class="title">{{product.Name}}</p>
+            </a>
+
+          </td>
+
+          <td style="color:#bfa947;" >
+            <span>{{product.Price}}</span>&nbsp;{{'shared.SAR'|translate}}
+          </td>
+          <td>
+            <div class="input-group number-spinner">
+              <span class="input-group-btn">
+                <button class="btn btn-default cuonterNumber" (click)="removeQTY(product)" data-dir="dwn">
+                  <span class="glyphicon glyphicon-minus"></span>
+                </button>
+              </span>
+              <input #Qty type="number" readOnly class="form-control text-center" [value]="product.QTY">
+              <span class="input-group-btn">
+                <button class="btn btn-default cuonterNumber" (click)="addQTY(product)" data-dir="up">
+                  <span class="glyphicon glyphicon-plus"></span>
+                </button>
+              </span>
+            </div>
+          </td>
+          <td *ngIf="product.IsValid==true&&count>0" style="color:#bfa947;">
+            {{product.QTY*product.Price}}&nbsp;{{'shared.SAR'|translate}}</td>
+            <td *ngIf="product.IsValid==false&&count>0" style="color:#bfa947;">
+              {{product.QTY*product.Price}}&nbsp;{{'shared.SAR'|translate}}</td>
+             
+          <td><a (click)="removeFromCart(product)"><i class="fas fa-times-circle cursor"
+                style=" font-size: 3rem;  color: #f64444;"></i></a></td>
+        </tr>
+
+      </table>
+
+    </div>
+    <!-- <div class="col-12">
+      <br>
+      <h4 style="font-weight:bold;   text-align: initial;">{{'cart.CartTotals'|translate}}</h4>
+      <br>
+      <table class="table-responsive" style="width:25rem">
+
+        <tr>
+          <th class="text-uppercase" style="font-weight:bold">{{'cart.Subtotla'|translate}}</th>
+          <td>{{totalPrice}}&nbsp;{{'shared.SAR'|translate}}</td>
+        </tr>
+        <tr>
+          <th class="text-uppercase" style="font-weight:bold">{{'cart.shippingCost'|translate}}</th>
+          <td>{{shippingCost}}&nbsp;{{'shared.SAR'|translate}}</td>
+        </tr>
+        <tr>
+          <th class="text-uppercase" style="font-weight:bold">{{'cart.Totals'|translate}}</th>
+          <td>{{totalPrice+shippingCost}}&nbsp;{{'shared.SAR'|translate}}</td>
+        </tr>
+      </table><br>
+    </div> -->
+    <div class="col-12" style="text-align: initial;">
+      <button style="width: 16rem;" class="btn btn-primary gold text-white text-uppercase" *ngIf="!processing"
+        [routerLink]="['/checkout']">
+        {{'cart.checkout'|translate}}</button>
+    </div>
+  </div><br><br>
+
+  <div></div>
+</div>

@@ -1,0 +1,33 @@
+.avatar {
+    height: 40px;
+    width: 40px;
+}
+
+.notification-container{
+  
+    width:100%;
+}
+.notification-item:hover{
+    cursor: pointer;
+    background-color: #eeee;
+}
+
+.notification-container .row{
+    margin: 0px !important
+}
+
+.notification-item{
+    font-size: 13px;
+}
+
+.notiDate{
+    color:gray;
+    font-size: 10px
+}
+
+.more{
+    cursor: pointer;
+}
+.more{
+    color: blue;
+}

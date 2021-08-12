@@ -1,0 +1,22 @@
+
+  .btn-primary {
+    color: #fff;
+    background-color: #BFA947 !important;
+    border-color: #BFA947 !important;
+  }
+  
+  .btn-primary.gold {
+    background: #BFA947;
+    border: none;
+    border-radius: 0px;
+    width: 10rem;
+    height: 3.5rem;
+    color: #fff !important;
+    cursor: pointer;
+  }
+  .form-control {
+    min-height: 58px;
+    max-height: 60px;
+    background-color: #f5f5f5;
+    margin-bottom: 10px;
+}

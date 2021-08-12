@@ -1,0 +1,96 @@
+<div class="row">
+  <div class="col-xs-12 siedBar rightsideFav p-0">
+    <div class="checkbox-list p-0">
+      <div class="siedBarPhoto p-0">
+
+        <div class="testimonial-writer">
+          <div class="testimonial-writer-name ">
+            <!-- <i class="fa fa-user-circle"></i> -->
+            <div class="justify-content-center" style="text-align: center">
+              <h3 style=" margin-top: 2rem;">
+                <img src={{CustomerPhoto}} style="border-radius: 50%;" onError="this.src='assets/images/avatar.jpg';"
+                  class="img-thumbnail img-fluid" />
+              </h3>
+              <h3>
+                <label class="btn btn-secondary btn-file" class="btnUpload">
+
+
+                  <span> <i class="fas fa-camera" style="color: white; font-size:28px;"></i> </span>
+                  <input hidden type="file" accept="image/*" class="btn" style="display:block"
+                    (change)="UploadLogoFile($event)" />
+                  <input type="hidden" name="fileHidden" />
+                </label>
+              </h3>
+            </div>
+            <span class="padding-less" style="color:white"> {{userName}}</span>
+          </div>
+          <!-- <div class="testimonial-writer-english">m.tabdelraziq@qcharity.org</div> -->
+          <!-- <a href="#" (click)="logout()" class="testimonial-writer-company">{{'account.logout'|translate}}</a> -->
+        </div>
+      </div>
+
+      <hr />
+      <ul class="todo-list userList">
+
+        <li routerLinkActive="active" class="done" style=" color: #8b8f97;
+        border-bottom: 1px solid #cccfd0;">
+          <a  routerLink="/orders" title="" alt="..">
+            <span class="pull-left margin-h-10">
+              <i class="fas fa-list-alt"></i>
+            </span>
+            {{'menu.myOrders'|translate}}</a>
+        </li>
+        <li routerLinkActive="active" style=" color: #8b8f97;
+        border-bottom: 1px solid #cccfd0;">
+          <a  routerLink="/shipping-address" title="" alt="..">
+            <span class="pull-left margin-h-10">
+              <i class="fa fa-map-marker"></i>
+            </span>
+            {{'menu.MyAddresses'|translate}} </a>
+        </li>
+        <li routerLinkActive="active" style=" color: #8b8f97;
+        border-bottom: 1px solid #cccfd0;">
+          <a  routerLink="/wishlist" title="" alt="..">
+            <span class="pull-left margin-h-10">
+              <i class="fas fa-heart"></i>
+            </span>
+            {{'menu.MyFavorites'|translate}} </a>
+        </li>
+        <li routerLinkActive="active" style=" color: #8b8f97;
+        border-bottom: 1px solid #cccfd0;">
+          <a  routerLink="/profile-edit" title="" alt="..">
+            <span class="pull-left margin-h-10">
+              <i class="fa fa-cog" aria-hidden="true"></i>
+            </span> {{'menu.account-setting'|translate}} </a>
+        </li>
+        <li routerLinkActive="active" style=" color: #8b8f97;
+        border-bottom: 1px solid #cccfd0;">
+          <a  routerLink="/password-edit" title="" alt="..">
+            <span class="pull-left margin-h-10">
+              <i class="fa fa-lock" aria-hidden="true"></i>
+            </span> {{'shared.change-password'|translate}} </a>
+        </li>
+
+        <!-- <li>
+        <a routerLink="/auto-login" [queryParams]="{returnUrl:'Vendor'}" target="_blank" title="" alt="..">
+          <span class="pull-left margin-h-10">
+            <i class="fa fa-exchange-alt" aria-hidden="true"></i>
+          </span> {{'shared.sale-products'|translate}} </a>
+      </li> -->
+        <li routerLinkActive="active" style="color:#2d3e50;cursor: pointer;">
+          <a  (click)="signoutFromAll()">
+            <span class="pull-left margin-h-10">
+              <i class="fa fa-sign-out-alt" aria-hidden="true"></i>
+            </span> {{'account.logout'|translate}}
+          </a>
+          <!-- <a href="/edit">تعديل الحساب</a> -->
+        </li>
+        <!-- <li>
+          <a (click)="resendConfirmationEmail()" title="" alt=".."><span class="pull-left margin-h-10"><i class="fa fa-cog"
+                aria-hidden="true"></i>
+            </span> {{'shared.resend-confirm-email'|translate}} </a>
+          </li> -->
+      </ul>
+    </div>
+  </div>
+</div>

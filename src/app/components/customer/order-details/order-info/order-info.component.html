@@ -1,0 +1,204 @@
+<section class="content" style="margin-top: 13rem;">
+  <br> <br> <br> <br>
+  <div class="container">
+    <div class="row" style="padding: inherit;">
+      <div class="col-12 ">
+        <h3>{{'order.orderInfo'|translate}}</h3>
+      </div>
+      <div class="col-12 " style="border:1px solid #d1d1d1"><br>
+        <div class="row">
+          <div class="col-9" style=" text-align: initial;">
+            <div class="row">
+              <div class="col-4" style=" text-align: initial;">
+                <label>{{'order.orderPlacedOn'|translate}}:</label>&nbsp;<p>{{order.Date |date:'fullDate'}}</p>
+                &nbsp;&nbsp;
+              </div>
+              <div class="col-4" style=" text-align: initial;">
+                <label>{{'order.orderId'|translate}}:</label>&nbsp;<p>{{order.OrderNumber}} </p><br>
+              </div>
+            </div>
+          </div>
+          <div class="col-3" style=" text-align: end;">
+            <button class="btn cancelbtn" *ngIf="order.StatusID==2"
+              (click)="openCancleOrderModal(cancleOrder,product)">{{'order.cancel'|translate}}</button>&nbsp;
+            <label style="color:#BFA947">{{order.StatusName}}</label>
+          </div>
+        </div><br>
+      </div>
+      <div class="col-12 " style="border:1px solid #d1d1d1"><br>
+        <div class="row">
+          <div class="col-4" style=" text-align: initial;">
+            <label>{{'order.payment-method'|translate}}</label><br>
+            <p>{{order.PaymentMethodName}}</p>&nbsp;&nbsp;
+          </div>
+          <div class="col-4" style=" text-align: initial;">
+            <label>{{'order.receipient'|translate}}</label><br>
+            <p>{{order.CustomerName}}</p><br>
+          </div>
+          <div class="col-4" style=" text-align: initial;">
+            <label>{{'order.DetailsOfRecipientAddress'|translate}}</label><br>
+            <p><span>{{order.CountryName}}</span>&nbsp;&nbsp;<span>{{order.CityName}}</span>
+              &nbsp;&nbsp;<span>{{order.RegionName}}</span></p><br>
+            <p>{{'order.StreetName'|translate}}: {{order.Street}}</p><br>
+            <p><span>{{'order.Building'|translate}}: {{order.Building}}</span> &nbsp;&nbsp;
+              <span>{{'order.Floor' | translate}}:{{order.Floor}}</span>
+              &nbsp;&nbsp;<span>{{'order.Apartment'|translate}}:{{order.Apartment}}</span></p>
+          </div>
+
+        </div><br>
+      </div>
+      <div class="col-12 " style="border:1px solid #d1d1d1">
+        <div class="row item" *ngFor="let product of order.Products">
+          <div class="col-6" style=" text-align: initial;">
+            <div class="row">
+              <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-xs-12"><br>
+                <img class="img-fluid img-responsive cartProduct" [src]="product.Image">
+                <br>
+              </div>
+              <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9 col-xs-9">
+                <br>
+                <h5 class="title">
+                  {{(product.ProductName.length>20)?product.ProductName.substr(0,20):product.ProductName}}</h5>
+                <h6>{{'order.OTY' |translate}}. {{product.Quantity}}</h6>
+              </div>
+            </div>
+          </div>
+          <div class="col-2" style="text-align: -webkit-center;text-align: -moz-center;"> <br>
+            <label>{{'order.Price'|translate}}:</label>&nbsp;
+            <p>{{product.Price}}: {{'shared.SAR'|translate}}</p><br><br>
+          </div>
+          <div class="col-4" style="text-align: -webkit-center;text-align: -moz-center;"
+            *ngIf="order.StatusID==2&&product.IsCancelled==false"><br>
+            <button class="btn cancelbtn"
+              (click)="openCancleModal(cancleTemplate,product)">{{'order.cancel'|translate}}</button>
+          </div>
+          <div class="col-4" style="text-align: -webkit-center;text-align: -moz-center;" *ngIf="order.StatusID==5">
+            <br>
+            <button (click)="openReviewModal(reviewTemplate,product)" *ngIf="!product.IsRated && order.StatusID==5"
+              class="btn btn-primary gold text-white ">{{'order.rate-product'|translate}}</button>
+            <a class="padding-bottom-25" *ngIf="product.IsRated">
+              <h5 class="colorBittersweet ">{{'order.rating'|translate}}</h5>
+              <product-rating [value]="product.Rating"></product-rating>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 " style="border:1px solid #d1d1d1"><br>
+        <div class="row">
+          <div class="col-12" style="text-align: -webkit-center;text-align: -moz-center;">
+            <label>{{'order.total'|translate}}: </label>&nbsp;<p style="color:#BFA947">{{order.Total}}
+              {{'shared.SAR'|translate}}</p>
+          </div>
+        </div>
+      </div>
+    </div><br>
+  </div>
+</section>
+
+<ng-template #cancleTemplate>
+
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">{{'order.cancle-the-item'|translate}}</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="cancleModalRef.hide()">
+
+      <i class="fa fa-times 7x"></i>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form role="form" novalidate [formGroup]="cancleForm">
+      <div class="form-group" [class.has-error]="(!CancleReason.valid) && CancleReason.touched"
+        [class.has-success]="CancleReason.valid && (CancleReason.dirty||CancleReason.touched)">
+        <label class="control-label gridHead">{{'shared.reason'|translate}}</label>
+        <select formControlName="CancleReasonID" class="form-control">
+          <option *ngFor="let item of cancleReasonList;let i=index;" [selected]="true" [disabled]="item.ID==0"
+            [value]="item.ID">{{item.Name}}</option>
+        </select>
+        <div *ngIf="!CancleReason.valid && CancleReason.touched" class="text text-danger">
+          <p *ngIf="CancleReason.hasError('required')">{{'shared.validation.required'|translate}}</p>
+        </div>
+      </div>
+    </form>
+
+    <div class="form-group">
+      <label class="control-label gridHead">{{'shared.comment'|translate}}</label>
+      <textarea class="form-control" [(ngModel)]="review" rows="4"></textarea>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-default" (click)="saveCancleItem()">{{'shared.ok'|translate}}</button>
+  </div>
+</ng-template>
+<ng-template #cancleOrder>
+
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">{{'order.cancle-the-item'|translate}}</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="cancleModalRef.hide()">
+
+      <i class="fa fa-times 7x"></i>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form role="form" novalidate [formGroup]="cancleForm">
+      <div class="form-group" [class.has-error]="(!CancleReason.valid) && CancleReason.touched"
+        [class.has-success]="CancleReason.valid && (CancleReason.dirty||CancleReason.touched)">
+        <label class="control-label gridHead">{{'shared.reason'|translate}}</label>
+        <select formControlName="CancleReasonID" class="form-control">
+          <option *ngFor="let item of cancleReasonList;let i=index;" [selected]="true" [disabled]="item.ID==0"
+            [value]="item.ID">{{item.Name}}</option>
+        </select>
+        <div *ngIf="!CancleReason.valid && CancleReason.touched" class="text text-danger">
+          <p *ngIf="CancleReason.hasError('required')">{{'shared.validation.required'|translate}}</p>
+        </div>
+      </div>
+    </form>
+
+    <div class="form-group">
+      <label class="control-label gridHead">{{'shared.comment'|translate}}</label>
+      <textarea class="form-control" [(ngModel)]="review" rows="4"></textarea>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-default" (click)="CancelOrder()">{{'shared.ok'|translate}}</button>
+  </div>
+</ng-template>
+<ng-template #reviewTemplate style="margin-top: 9rem;">
+
+  <div class="modal-header">
+    <button type="button" class="close pull-left" aria-label="Close" (click)="cancleModalRef.hide()">
+
+      <i class="fa fa-times 7x"></i>
+    </button>
+    <h4>{{'rating-vendor.title'|translate}}</h4><br>
+
+  </div>
+  <div class="modal-body">
+    <!-- <h4 class=" pull-left">{{'rating-vendor.title'|translate}}</h4><br> -->
+    <div class="col-xs-12 ratings" >
+
+      <div class="row">
+        <div class="col-12"><br>
+          <div class="row">
+            <div class="col-3">
+              <img class="img-responsive img" alt="img" src="{{ProductImage}}">
+            </div>
+            <div class="col-9" style="text-align: initial;">
+              <h4 class="title">{{ProductName}}</h4>
+              <bar-rating name="rating" class="ratings" [(ngModel)]="value" [max]="5" required></bar-rating>
+            </div>
+          </div><br>
+          <div class="form-group col-xs-12">
+            <textarea class="form-control" [(ngModel)]="review" rows="4"
+              placeholder="{{'rating-vendor.writeYourReviewHere'|translate}}"></textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+  <div class="modal-footer">
+    <div class="form-group col-xs-12" style="text-align: initial;">
+      <button (click)="saveRate()" *ngIf="!isAddedSuccessfully" class="btn btn-primary gold text-white ">
+        {{'rating-vendor.review'|translate}} </button>
+    </div>
+  </div>
+</ng-template>

@@ -1,0 +1,120 @@
+[
+    {
+        "ID": 0,
+        "Image": "../../../../../assets/images/1.jpg",
+        "Name": "Licensed Frozen Hat",
+        "price": 170.00,
+        "QTY":1,
+        "MaxQTY":4,
+        "IsValid":true,
+        "ProductUrl":"",
+        "description": "Incidunt et magni est ut.",    
+        "quantity": 56840,      
+        "OldPrice":30,
+        "Stock":1,
+        "AddedToWishlist":"",
+        "AddedToCart":false,
+        "Discount":"20%",
+        "Department":"Health & Fitness"
+       
+        
+    },
+    {
+        "ID": 1,
+        "Image": "../../../../../assets/images/2.jpg",
+        "Name": "Rustic Concrete Chicken",
+        "price": 302.00,
+        "QTY":1,
+        "MaxQTY":5,
+        "IsValid":true,
+        "description": "Sint libero mollitia.",
+        "quantity": 9358,
+        "ProductUrl":"",
+        "OldPrice":30,
+        "Stock":1,
+        "AddedToWishlist":"",
+        "AddedToCart":true,
+        "Discount":"60%",
+        "Department":"Baby Products"
+    },
+    {
+        "ID": 2,
+        "Image": "../../../../../assets/images/3.jpg",
+        "Name": "Fantastic Metal Computer",
+        "price": 279.00,
+        "QTY":1,
+        "MaxQTY":4,
+        "IsValid":true,
+        "description": "In consequuntur cupiditate et unde minus.",  
+        "quantity": 90316,
+        "ProductUrl":"",
+        "OldPrice":30,
+        "Stock":1,
+        "AddedToWishlist":"",
+        "AddedToCart":false,
+        "Discount":"30%",
+        "Department":"Fashion"
+ 
+        
+    },
+    {
+        "ID": 3,
+        "Image": "../../../../../assets/images/4.jpg",
+        "Name": "Licensed Frozen Hat",
+        "price": 170.00,
+        "QTY":1,
+        "MaxQTY":5,
+        "IsValid":true,
+        "description": "Incidunt et magni est ut.",
+        "quantity": 56840,
+        "ProductUrl":"",
+        "OldPrice":30,
+        "Stock":0,
+        "AddedToWishlist":"",
+        "AddedToCart":false,
+        "Discount":"20%",
+        "Department":"Cleaning & Household"
+       
+        
+        
+    },
+    {
+        "ID": 4,
+        "Image": "../../../../../assets/images/img1.jpg",
+        "Name": "Rustic Concrete Chicken",
+        "price": 302.00,
+        "QTY":1,
+        "MaxQTY":4,
+        "IsValid":true,
+        "description": "Sint libero mollitia.",
+        "quantity": 9358,
+        "ProductUrl":"",
+        "OldPrice":30,
+        "Stock":0,
+        "AddedToWishlist":"",
+        "AddedToCart":true,
+        "Discount":"10%",
+        "Department":"Beauty & Personal Care"
+   
+    },
+    {
+        "ID": 5,
+        "Image": "../../../../../assets/images/img2.jpg",
+        "Name": "Fantastic Metal Computer",
+        "price": 279.00,
+        "QTY":1,
+        "MaxQTY":4,
+        "IsValid":true,
+        "description": "In consequuntur cupiditate et unde minus.",
+        "quantity": 90316,
+        "ProductUrl":"",
+        "OldPrice":30,
+        "Stock":1,
+        "AddedToWishlist":"",
+        "AddedToCart":false,
+        "Discount":"50%",
+        "Department":"Cleaning & Household"
+        
+        
+    }
+]

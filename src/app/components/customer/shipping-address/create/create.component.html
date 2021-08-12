@@ -1,0 +1,138 @@
+<ng-snotify></ng-snotify>
+<section class="content" style="margin-top: 13rem;">
+    <div class="container">
+      <div class="row margin-v-20">
+        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+          <user-side-menu></user-side-menu>
+        </div>
+        <div class="col-lg-9 col-md-9 col-sm- col-xs-12 ">
+          <div class="row">
+            <div class="col-xs-12 text-center margin-v-20" *ngIf="AddedSuccefully">
+              <div class="alert alert-success">
+                <h3>{{'shipping-address.added'|translate}}</h3>
+              </div>
+            </div>
+          </div>
+          <div class="row productFilter clearfix">
+            <div class="col-md-6 col-sm-6 col-xs-12 text-xs-center" *ngIf="model.ID==0">
+              <h3>{{'shipping-address.addAddress'|translate}}</h3>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-12 text-xs-center" *ngIf="model.ID>0">
+              <h3>{{'shipping-address.edit'|translate}}</h3>
+            </div>
+          </div>
+          <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="col-md-12 col-sm-12 col-xs-12 padding-v-10">
+              <form novalidate [formGroup]="form" (ngSubmit)="save()">
+                
+                <div class="form-group has-feedback" >
+                  <input type="text" class="form-control" formControlName="Name" placeholder="{{'shipping-address.Name'|translate}}" />       
+                  <div class="text-danger erorrMsg" *ngIf="!form.controls['Name'].valid ">
+                    <div *ngIf="form.controls['Name'].hasError('pattern')">{{'shared.validation.only-letters'|translate}}</div>
+                    <div *ngIf="form.controls['Name'].hasError('required')">{{'shared.validation.required'|translate}}</div>
+                  </div>
+                </div>
+                <div class="form-group" >
+                  <select formControlName="CountryID" class="form-control" (change)="CountryChange()">
+                      <!-- <option selected value=""> {{'shared.choose-country'|translate}}</option> -->
+                    <option *ngFor="let item of CountryList;let i=index;" [selected]="item.ID==0 && id==0" [disabled]="item.ID==0"
+                      [value]="item.ID">{{item.Name}}</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                    <select formControlName="CityID" class="form-control " (change)="CityChange()">
+                        <option selected value="" selected > {{'shared.choose-city'|translate}}</option>
+                      <option *ngFor="let item of CityList;let i=index;"  [selected]="item.ID==0 && id==0" [disabled]="item.ID==0"
+                        [value]="item.ID">{{item.Name}}</option>
+                    </select>
+                 
+                </div>
+
+                <div class="form-group"  >
+                    <select formControlName="AreaID" class="form-control " >
+                      <!-- <option selected value="" selected> {{'shared.choose-area'|translate}}</option> -->
+                      <option *ngFor="let item of AreaList;let i=index;"   [selected]="item.ID==0 && id==0" [disabled]="item.ID==0"
+                        [value]="item.ID">{{item.Name}}</option>
+                    </select>
+                    <div  class="text-danger erorrMsg">
+                      <p *ngIf="form.controls['AreaID'].hasError('required') && id==0">{{'shared.validation.required'|translate}}</p> 
+                    </div>
+                  </div>
+    
+
+                <div class="form-group has-feedback">
+                  <input type="text" class="form-control" formControlName="Street" placeholder="{{'shipping-address.street'|translate}}" />
+             
+           
+                  <div class=" text-danger erorrMsg" *ngIf="!form.controls['Street'].valid ">
+                    <div *ngIf="form.controls['Street'].hasError('pattern')">{{'shared.validation.only-letters'|translate}}</div>
+                    <div *ngIf="form.controls['Street'].hasError('required')">{{'shared.validation.required'|translate}}</div>
+                    <p *ngIf="form.controls['Street'].hasError('minlength')">{{'shared.validation.min-length'|translate}}</p>
+                    <p *ngIf="form.controls['Street'].hasError('maxlength')">{{'shared.validation.max-length'|translate}}</p>
+
+                  </div>
+
+                </div>
+                <div class="form-group has-feedback" >
+                  <input type="number" class="form-control" min="1" max="100"  formControlName="BuildingNumber" placeholder="{{'shipping-address.building-number'|translate}}">
+               
+                  <div class=" text-danger erorrMsg" *ngIf="!form.controls['BuildingNumber'].valid ">
+                    <div *ngIf="form.controls['BuildingNumber'].hasError('pattern')">{{'shared.validation.only-letters'|translate}}</div>
+                    <div *ngIf="form.controls['BuildingNumber'].hasError('required')">{{'shared.validation.required'|translate}}</div>
+                  </div>
+
+                </div>
+                <div class="form-group has-feedback">
+                    <input type="number" class="form-control"  min="1" max="100"   formControlName="FlowerNumber" placeholder="{{'shipping-address.flower-number'|translate}}" />
+                  <div class="text-danger erorrMsg" *ngIf="!form.controls['FlowerNumber'].valid">
+                    <div *ngIf="form.controls['FlowerNumber'].hasError('pattern')">{{'shared.validation.only-letters'|translate}}</div>
+                    <div *ngIf="form.controls['FlowerNumber'].hasError('required')">{{'shared.validation.required'|translate}}</div>
+                  </div>
+
+                </div>
+
+                
+                <div class="form-group has-feedback" >
+                    <input type="number" class="form-control"  min="1" max="100"    formControlName="FlatNumber" placeholder="{{'shipping-address.flat-number'|translate}}" />
+                    <div class="text-danger erorrMsg" *ngIf="!form.controls['FlatNumber'].valid">
+                      <div *ngIf="form.controls['FlatNumber'].hasError('pattern')">{{'shared.validation.only-letters'|translate}}</div>
+                      <div *ngIf="form.controls['FlatNumber'].hasError('required')">{{'shared.validation.required'|translate}}</div>
+                      
+                    </div>
+                  </div>
+
+                   
+                 <div class="form-group has-feedback" >
+                    <input type="text" class="form-control" formControlName="Mobile" placeholder="{{'shared.phone-number'|translate}}" />
+                    <div class="text-danger erorrMsg" *ngIf="!form.controls['Mobile'].valid">
+                      <div *ngIf="form.controls['Mobile'].hasError('pattern')">{{'shared.validation.PhoneNumber-Valiation'|translate}}</div>
+                      <div *ngIf="form.controls['Mobile'].hasError('required')">{{'shared.validation.required'|translate}}</div>
+                      <p *ngIf="form.controls['Mobile'].hasError('minlength')">{{'shared.validation.mobile-min-length'|translate}}</p>
+                      <p *ngIf="form.controls['Mobile'].hasError('maxlength')">{{'shared.validation.mobile.max-length'|translate}}</p>
+                      
+                    </div>
+                  </div>
+  
+                <div class="col-md-12 col-sm-12 col-xs-12 padding-none" style="text-align: initial" *ngIf="id==0" >
+                  <button class="btn btn-primary gold text-white  upper-case buttonList" [disabled]="!form.valid" *ngIf="!processing">
+                    {{'shipping-address.add'|translate}} </button>
+                  <img [hidden]="!processing" src="/assets/images/loader2.gif" width="40" height="40">
+                </div>
+
+                <div class="col-md-12 col-sm-12 col-xs-12 padding-none" style="text-align: initial" *ngIf="id!=0" >
+                  <button class="btn btn-primary gold text-white  upper-case buttonList" [disabled]="!form.valid" *ngIf="!processing">
+                    {{'shared.save'|translate}} </button>
+                  <img [hidden]="!processing" src="/assets/images/loader2.gif" width="40" height="40">
+                </div>
+                <!-- <div class="col-md-12 col-sm-12 col-xs-12 text-right padding-none" *ngIf="model.ID>0">
+                  <button class="btn btn-lg btn-primary  buttonList" [disabled]="!form.valid" *ngIf="!processing">
+                    {{'shipping-address.edit'|translate}}</button>
+                  <img [hidden]="!processing" src="/assets/images/loader2.gif" width="40" height="40">
+                </div> -->
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>

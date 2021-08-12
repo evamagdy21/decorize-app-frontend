@@ -1,0 +1,88 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-6 " style="    text-align: end;">
+      <h3 mat-dialog-title >{{'product.productDetails'|translate}}</h3>
+    </div>
+    <div class="col-6" style="text-align: end;">
+      <button (click)="onNoClick()" style="    color: white;
+      background-color: #bfa947;"><i class="fas fa-window-close"></i></button>
+    </div>
+    <div mat-dialog-content class="row" style="width:100%;  ">
+      <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-xs-12">
+        <div *ngIf="product.Image">
+          <img class="img-fluid " [alt]="product.Name" src="{{product.Image}}"
+          onError="this.src='../../../assets/images/nophoto.png';">
+          <!-- <ngx-gallery [options]="gallery2Options" [images]="galleryImages" style="width: 200px;height: 200px;"></ngx-gallery> -->
+        </div>
+      </div>
+      <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-xs-12" style="text-align: justify;">
+        <h3 class="textofframe"> {{product.Name}} </h3>
+        <br>
+        <h5 class="aofreviews">3 &nbsp;{{'product.CustomerReviews'|translate}}</h5>
+
+
+        <p><i class="far fa-money-bill-alt priceIcon"></i>&nbsp;{{product.price}}&nbsp;{{'shared.SAR'|translate}}</p>
+        <br>
+        <div *ngIf="product.Discount>0" class="discount">
+          <span class="btn btn-danger percintageBTN">{{product.Discount}}%</span>
+
+        </div>
+        <!-- <h5 style="text-align: auto;
+                  text-align: -webkit-auto;">
+        <span class="colorBittersweet Englishfont priceNum2">{{product.NewPrice}} </span>
+        <span class="colorBittersweet  pricetxt2 text-uppercase">{{'product.coin'|translate}}</span>
+      </h5> -->
+        <br>
+        <!-- description -->
+        <div style=" text-align: initial;">
+          <div [innerHTML]="product.description"></div>
+          <p class="categoryp">
+            {{'product.department'|translate}}:
+            <span>{{product.Department}}</span>
+          </p>
+        </div>
+        <br>
+        <div *ngIf="product.Stock>0">
+          <button *ngIf="!product.AddedToCart" class="btn text-uppercase addtocartbtn1" (click)="addToCart(product)">
+            <!-- <i class="fas fa-shopping-bag"></i> -->
+            <!-- {{'product.add-cart'|translate}} -->
+            <span> {{'product.add-cart'|translate}}</span>
+          </button>
+
+          <button *ngIf="product.AddedToCart" (click)="removeFromCart(product)" class="btn  addtocartbtn1">
+            <span>
+              <!-- <i class="fas fa-shopping-bag"></i> -->
+
+            </span> {{'product.delete-cart'|translate}}</button>
+        </div>
+        <div *ngIf="product.Stock==0">
+          
+            <a class="btn btn-primary buttonList unavilable margin-top-15 margin-bottom-10 addtocartBTN">
+              <span class="hidden-sm hidden-xs">
+                {{'shared.unavilable'|translate}}
+              </span>
+            </a>
+          
+        </div>
+        <br>
+        <a class="showmore" (click)="productDetails(product.ProductUrl)">
+          {{'home.showmore'|translate}}</a>
+        <!-- department name -->
+       
+
+      </div>
+      <div class="col-lg-2 col-md-2 col-sm-12 col-xs-2">
+        <!-- heart -->
+        <a *ngIf="!product.AddedToWishlist" (click)="addToWishList(product)" class="btn    buttonweb2">
+          <i class="fa fa-heart fa-2x"></i> </a>
+        <a *ngIf="product.AddedToWishlist" (click)="removeFromWishList(product)" class="btn   buttonweb2">
+          <i class="fa fa-heart fa-2x heartred"></i> </a>
+        <br><br>
+        <!-- star -->
+ 
+        <br><br>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- </div> -->

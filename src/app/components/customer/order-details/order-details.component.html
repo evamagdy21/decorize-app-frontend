@@ -1,0 +1,134 @@
+<!--component html goes here -->
+<section class="content" style="margin-top: 13rem;">
+  <br> <br> <br> <br>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+        <user-side-menu></user-side-menu>
+      </div>
+
+      <div class="col-lg-9 col-md-9 col-sm- col-xs-12">
+        <div class="row productFilter clearfix">
+          <div class="col-md-6 col-sm-6 col-xs-12 ">
+            <div class="pull-left">
+              <h3>{{'menu.myOrders'|translate}}</h3>
+            </div>
+          </div>
+
+        
+        </div>
+        <div class="row" style="padding: inherit;margin-top: 2rem;" *ngFor="let order of orders">    
+          <div class="col-12 " style="border:1px solid #d1d1d1">  
+              <br><br>          
+            <div class="row">  
+              
+              <div class="col-6" style=" text-align: initial;">
+                <label>{{'order.orderPlacedOn'|translate}}:</label>&nbsp;<p>{{order.Date |date:'fullDate'}}</p><br>
+                <label>{{'order.orderId'|translate}}:</label>&nbsp;<p>{{order.OrderNumber}} </p><br>
+              </div>
+              <div class="col-6" style=" text-align: initial;">
+                <label>{{'order.PaymentMethod'|translate}}:</label>&nbsp;<p>{{order.PaymentMethodName}}</p><br>
+                <label>{{'order.total'|translate}}:</label>&nbsp;<p>{{order.Total}}</p><br>
+              </div>
+              <div class="col-md-12 col-sm-12 col-xs-12" *ngIf="order.StatusID!=6 && order.StatusID!=1"><br>
+            
+                <ol class=" progress-tracker">
+                  <li class="col-xs-3 step" [class.active]="order.StatusID==status.ID"
+                    *ngFor="let status of orderStatusList">
+                    <span class="step-name">{{status.Name}}</span>
+                  </li>
+
+                </ol>
+              </div>
+            
+              <div class="col-6" style=" text-align: initial;">
+                <a routerLink="/order-info/{{order.ID}}" class="orderDetails">{{'order.orderDetails'|translate}}</a><br><br>
+              
+              </div>
+              <div class="col-6" style=" text-align: end;" *ngIf="order.StatusID==2">
+                <button class="btn cancelbtn"
+                  (click)="openCancleModal(cancleTemplate,order)">{{'order.cancel'|translate}}</button><br><br>
+              </div>
+              <div  class="col-6 " *ngIf="order.StatusID==6" style="color:#BFA947;text-align: end;">
+                  <span class="status"> {{order.StatusName}}</span>
+              </div>
+            </div>
+          </div>
+        </div><br><br>
+       
+      </div>
+    </div>
+  </div>
+  <div class="col-8">
+    <mat-paginator [length]=Records [pageSize]=pageSize [pageSizeOptions]="[9,18,27,36]"
+      (page)="GetCustomerOrders($event)" showFirstLastButtons>
+    </mat-paginator>
+  </div>
+</section>
+
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">{{'shared.refund'|translate}}</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+    
+      <i class="fa fa-times 7x"></i>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form role="form" novalidate [formGroup]="form">
+      <div class="form-group" [class.has-error]="(!Reason.valid) && Reason.touched"
+        [class.has-success]="Reason.valid && (Reason.dirty||Reason.touched)">
+        <label class="control-label gridHead">{{'shared.reason'|translate}}</label>
+        <select formControlName="ReasonId" class="form-control">
+          <option *ngFor="let item of reasonList;let i=index;" [selected]="true" [disabled]="item.ID==0"
+            [value]="item.ID">{{item.Name}}</option>
+        </select>
+        <div *ngIf="!Reason.valid && Reason.touched" class="text text-danger">
+          <p *ngIf="Reason.hasError('required')">{{'shared.validation.required'|translate}}</p>
+        </div>
+      </div>
+    </form>
+
+    <div class="form-group">
+      <label class="control-label gridHead">{{'shared.comment'|translate}}</label>
+      <textarea class="form-control" [(ngModel)]="review" rows="4"></textarea>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-default" (click)="save()">{{'shared.ok'|translate}}</button>
+  </div>
+</ng-template>
+
+<ng-template #cancleTemplate>
+
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">{{'order.cancle-the-item'|translate}}</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="cancleModalRef.hide()">
+     
+      <i class="fa fa-times 7x"></i>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form role="form" novalidate [formGroup]="cancleForm">
+      <div class="form-group" [class.has-error]="(!CancleReason.valid) && CancleReason.touched"
+        [class.has-success]="CancleReason.valid && (CancleReason.dirty||CancleReason.touched)">
+        <label class="control-label gridHead">{{'shared.reason'|translate}}</label>
+        <select formControlName="CancleReasonID" class="form-control">
+          <option *ngFor="let item of cancleReasonList;let i=index;" [selected]="true" [disabled]="item.ID==0"
+            [value]="item.ID">{{item.Name}}</option>
+        </select>
+        <div *ngIf="!CancleReason.valid && CancleReason.touched" class="text text-danger">
+          <p *ngIf="CancleReason.hasError('required')">{{'shared.validation.required'|translate}}</p>
+        </div>
+      </div>
+    </form>
+
+    <div class="form-group">
+      <label class="control-label gridHead">{{'shared.comment'|translate}}</label>
+      <textarea class="form-control" [(ngModel)]="review" rows="4"></textarea>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-default" (click)="saveCancelOrder()">{{'shared.ok'|translate}}</button>
+  </div>
+</ng-template>

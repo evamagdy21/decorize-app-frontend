@@ -1,0 +1,92 @@
+ <ng-snotify></ng-snotify>
+ <div class="container" style="margin-top: 13rem;">
+  <br><br>
+  <div class="row">
+
+    <!-------------------------------Start Product-------------------------------------------->
+    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12" *ngFor="let product of featuredProducts">
+      <div class=" thumbnail product-grid2 listPris p-0">
+        <div class="product-image2 ">
+          <a (click)="sendProduct(product)"><img class="productImage image img-fluid " [alt]="product.ProductName"
+              [src]="product.Image" onError="this.src='../../../assets/images/nophoto.png';"></a>
+        </div>
+
+        <div class="img__overlay">
+          <ul class="social">
+            <li><a text-center  (click)="ProductDetails(product.ID)"><i class=" icon fa fa-eye"></i></a></li><br>
+
+            <!-- <li>
+              <button text-center (click)="addToWishList(product)">
+                <i class="fa fa-heart"></i>
+              </button>
+            </li><br> -->
+            <li>
+                <button text-center *ngIf="!product.AddedToWishlist" (click)="addToWishList(product)">
+                    <i class="fa fa-heart"></i>
+                </button>
+            </li><br>
+            <li>
+                <button  *ngIf="product.AddedToWishlist" style=" text-align: center; color: #fff;
+                background-color: #BFA947;
+                -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+                        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);" 
+                    (click)="removeFromWishList(product)">
+                    <span>
+                        <i class=" fa fa-heart"></i>
+                    </span>
+                </button>
+            </li><br>
+
+            <div *ngIf="product.Stock>0">
+              <li>
+                <button *ngIf="!product.AddedToCart" text-center (click)="addToCart(product)">
+                  <span>
+                      <i class="fa fa-shopping-cart " ></i>
+                  </span>
+                </button>
+              </li><br>
+              <li>
+                <button style=" text-align: center; color: #fff;
+                                      background-color: #BFA947;
+                                      -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+                                              box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);" *ngIf="product.AddedToCart"
+                  (click)="removeFromCart(product)">
+                  <span>   <i class="fa fa-shopping-cart " ></i> </span>
+                </button>
+              </li>
+            </div><br>
+            <div *ngIf="product.Stock <= 0">
+              <li><a text-center><i class="fas fa-ban"></i></a></li><br>
+            </div>
+          </ul>
+        </div>
+
+
+      </div>
+
+      <div class="row text-center">
+        <div class="col-12">
+          <a [routerLink]="product.ProductUrl">
+            <h3 class="title">{{(product.Name.length>20)?product.Name.substr(0,20):product.Name}}</h3>
+          </a>
+          <div class="text-center">
+            <product-rating [value]="product.RatingAvg"></product-rating>
+          </div>
+  
+          <p><i class="far fa-money-bill-alt priceIcon" style="color: #BFA947"></i>&nbsp;{{product.OldPrice}}&nbsp;{{'shared.SAR'|translate}}</p><br>
+         
+          <div *ngIf="product.Discount>0" class="discount">
+            <span class="btn btn-danger percintageBTN" ><span>{{product.Discount}}%</span></span>
+          </div>
+          <br>
+        </div>
+      </div>
+    </div>
+  
+    <div class="col-8">
+      <mat-paginator [length]=Records [pageSize]=pageSize [pageSizeOptions]="[9,18,27,36]"
+        (page)="getFeaturedProducts($event)" showFirstLastButtons>
+      </mat-paginator>
+    </div>
+  </div>
+</div>

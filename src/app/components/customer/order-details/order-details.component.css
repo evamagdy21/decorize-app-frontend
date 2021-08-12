@@ -1,0 +1,44 @@
+span{
+    font-weight: bold;
+   }
+   
+label{
+  color:#4c4c4c;
+}
+p{
+  display: inline;
+  font-weight: bold;
+}
+.title{
+color:#a39350
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #BFA947 !important;
+  border-color: #BFA947 !important;
+}
+
+.btn-primary.gold {
+  background: #BFA947;
+  border: none;
+  border-radius: 0px;
+  width: 10rem;
+  height: 3.5rem;
+  color: #fff !important;
+  cursor: pointer;
+}
+
+a{
+  text-decoration: underline;
+}
+.cancelbtn{
+  background-color: transparent;
+  border:1px solid #d1d1d1;
+}
+.orderDetails:hover{
+  color:#BFA947;
+}
+.status{
+  font-size: larger;
+}

@@ -1,0 +1,36 @@
+
+
+.header
+{
+  background-color:#f6f6f6;
+  color:#4b4b4b;
+}
+form{
+  width:50%;
+}
+.has-feedback{
+  /* text-align: -webkit-auto; */
+  text-align: justify;
+}
+i{
+  text-align: auto;
+}
+.facebook{
+  border:1px solid #bfa947;
+  width: 60px;
+  background-color: #365899;
+  color: white;
+}
+.registerbtn
+{
+  background-color:#bfa947;
+  border:1px solid #bfa947;
+  width: 17rem;
+}
+.content {
+  margin-top: 5px;
+  min-height: calc(91.5vh - 350px);
+  box-sizing: border-box;
+  padding-left: 10%;
+  padding-right: 10%
+}

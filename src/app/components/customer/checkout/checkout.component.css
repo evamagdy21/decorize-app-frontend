@@ -1,0 +1,119 @@
+
+.paragraphofproductname{
+    display: inline;
+    color: #bfa947;
+   
+}
+.productimg
+{
+    display: inline;
+}
+.totalparagaph
+{
+    color: #bfa947;  
+}
+.table-hover
+{
+    border: 1px solid #dddddd;
+}
+.thclass
+{
+    padding: 25px;
+}
+.table {
+   
+    margin: 0 auto !important;
+}
+.btnnext
+{
+    background-color: #bfa947;
+    border-color:#bfa947; 
+}
+.btnnext:hover
+{
+    background-color: #bfa947; 
+    border-color:#bfa947; 
+}
+tbody{
+    border-bottom: 1px solid #dddddd;
+}
+tfoot{
+    border-bottom: 1px solid #dddddd;
+}
+.title{
+    font-weight: bold;
+    text-align: initial;
+}
+
+.header
+{
+  background-color:#f6f6f6;
+  color:#4b4b4b;
+}
+
+span{
+ font-weight: bold;
+}
+
+table.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+table{
+  border: 1px solid #d6d6d6;
+ 
+}
+.tbl , .maincell{
+  border: 1px solid #d6d6d6;
+}
+th, td {
+  padding: 7px;
+  border-collapse: collapse;
+  width: 100rem;
+  border:none;
+}
+tr th{
+font-weight: bold;
+text-align: center;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #BFA947 !important;
+  border-color: #BFA947 !important;
+}
+
+.btn-primary.gold {
+  background: #BFA947;
+  border: none;
+  border-radius: 0px;
+  width: 10rem;
+  height: 3.5rem;
+  color: #fff !important;
+  cursor: pointer;
+}
+.cursor
+{
+  cursor: pointer;
+}
+::ng-deep .mat-radio-container .mat-radio-outer-circle,
+::ng-deep .mat-radio-container .mat-radio-inner-circle {
+  border: none;
+  width: 0;
+}
+.img{
+    width: 8rem;
+    height: 8rem;
+  display: inline;
+  cursor: pointer;
+}
+.productName{
+  display: block;
+  color:#bfa947;
+}
+@media (min-width: 1200px)
+{
+.container {
+    width: 1002px;
+}}
